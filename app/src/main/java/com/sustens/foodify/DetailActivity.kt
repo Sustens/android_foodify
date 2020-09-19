@@ -17,7 +17,11 @@ class DetailActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-        var barcode_value = intent.getStringExtra("barcode")
-        barcode.setText(barcode_value)
+        val barcodeList = intent.getStringArrayListExtra("barcode")
+        var barcodeValue = ""
+        for (barcode in barcodeList.toList()){
+            barcodeValue += "$barcode /n"
+        }
+        barcode.text = barcodeValue
     }
 }
