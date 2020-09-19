@@ -1,6 +1,7 @@
 package com.sustens.foodify
 
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.scandit.datacapture.barcode.capture.BarcodeCapture
@@ -14,23 +15,48 @@ import com.scandit.datacapture.core.data.FrameData
 import com.scandit.datacapture.core.source.Camera
 import com.scandit.datacapture.core.source.FrameSourceState
 import com.scandit.datacapture.core.ui.DataCaptureView
+import com.sustens.foodify.model.ItemsResponse
+import com.sustens.foodify.model.ItemsResponseItem
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
+
+    private lateinit var apiInterface: APIInterface
+    private var itemsData = ArrayList<ItemsResponseItem>()
+    private var selectedItems = ArrayList<ItemsResponseItem>()
+    private lateinit var itemsAdapter: ItemsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        getItems()
         initializeBarCode()
+        itemsAdapter =  ItemsAdapter(selectedItems)
+        recycler_items.adapter = itemsAdapter
+    }
 
-//        var api :ApiHandler = ApiHandler();
-//        api.call()
+    private fun getItems() {
+        apiInterface = APIClient.getClient()!!.create(APIInterface::class.java)
 
-//        val intent = Intent(this, DetailActivity::class.java)
-//        // start your next activity
-//        intent.putExtra("barcode", "123")
-//        startActivity(intent)
+        val call: Call<ItemsResponse> = apiInterface.getItems()
+        call.enqueue(object : Callback<ItemsResponse?> {
+            override fun onResponse(
+                call: Call<ItemsResponse?>?,
+                response: Response<ItemsResponse?>
+            ) {
+                Log.d("TAG", response.code().toString() + "")
+                itemsData = response.body()!!
+
+            }
+
+            override fun onFailure(call: Call<ItemsResponse?>, t: Throwable?) {
+                call.cancel()
+            }
+        })
     }
 
     private fun initializeBarCode() {
@@ -65,14 +91,6 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         dataCaptureContext.setFrameSource(camera)
 
         val dataCaptureView = DataCaptureView.newInstance(this, dataCaptureContext)
-//        val margins = MarginsWithUnit(
-//            FloatWithUnit(0f, MeasureUnit.DIP),
-//            FloatWithUnit(0f, MeasureUnit.DIP),
-//            FloatWithUnit(0f, MeasureUnit.DIP),
-//            FloatWithUnit(110f, MeasureUnit.DIP)
-//        )
-//        dataCaptureView.scanAreaMargins = margins
-//        setContentView(dataCaptureView)
 
         (findViewById<ViewGroup>(R.id.scanner_container)).addView(dataCaptureView)
 
@@ -80,15 +98,7 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         val overlay =
             BarcodeCaptureOverlay.newInstance(barcodeCapture, dataCaptureView)
         overlay.shouldShowScanAreaGuides = true
-//        dataCaptureView.addOverlay(overlay)
 
-
-        // We have to add the laser line viewfinder to the overlay.
-//        LaserlineViewfinder viewFinder = new LaserlineViewfinder();
-//        viewFinder.setWidth(new FloatWithUnit(0.9f, MeasureUnit.FRACTION));
-//        overlay.setViewfinder(viewFinder);
-
-        // We put the dataCaptureView in its container.
     }
 
     private var camera: Camera? = null
@@ -106,7 +116,7 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         }
     }
 
-    private var lastBarcode = ""
+    private var itemID = ""
     override fun onBarcodeScanned(
         barcodeCapture: BarcodeCapture,
         session: BarcodeCaptureSession,
@@ -118,9 +128,16 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
 
         runOnUiThread {
             val recognizedBarcodes = session.newlyRecognizedBarcodes
-            if (recognizedBarcodes.isNotEmpty() && lastBarcode != recognizedBarcodes[0].data.toString()) {
-                lastBarcode = recognizedBarcodes[0].data.toString()
-                barcode_data.text = "${barcode_data.text} \n $lastBarcode \n"
+            if (recognizedBarcodes.isNotEmpty()) {
+                itemID = recognizedBarcodes[0].data.toString()
+                val index = itemsData.indexOfFirst { it.ID.toString() == itemID }
+                Log.v("a7a", index.toString())
+                Log.v("a7a", itemID.toString())
+                if (index>0){
+                    selectedItems.add(itemsData[index])
+                    itemsAdapter.notifyDataSetChanged()
+                }
+//                barcode_data.text = "${barcode_data.text} \n $lastBarcode \n"
             }        }
         val list_barcodes = ArrayList<String>()
 
