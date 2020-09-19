@@ -1,4 +1,4 @@
-package com.com.foodify
+package com.sustens.foodify
 
 import org.junit.Test
 

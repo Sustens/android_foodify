@@ -1,13 +1,14 @@
-package com.com.foodify
+package com.sustens.foodify
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.scandit.datacapture.barcode.capture.BarcodeCapture
 import com.scandit.datacapture.barcode.capture.BarcodeCaptureListener
 import com.scandit.datacapture.barcode.capture.BarcodeCaptureSession
 import com.scandit.datacapture.barcode.capture.BarcodeCaptureSettings
-import com.scandit.datacapture.barcode.data.Barcode
 import com.scandit.datacapture.barcode.data.Symbology
 import com.scandit.datacapture.barcode.ui.overlay.BarcodeCaptureOverlay
 import com.scandit.datacapture.core.capture.DataCaptureContext
@@ -22,7 +23,15 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initializeBarCode()
+//        initializeBarCode()
+
+//        var api :ApiHandler = ApiHandler();
+//        api.call()
+
+        val intent = Intent(this, DetailActivity::class.java)
+        // start your next activity
+        intent.putExtra("barcode", "123")
+        startActivity(intent)
     }
 
     private fun initializeBarCode() {
@@ -70,6 +79,8 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         super.onBarcodeScanned(barcodeCapture, session, data)
 
         val recognizedBarcodes = session.newlyRecognizedBarcodes
-//        // Do something with the barcodes.
+        val list_barcodes = recognizedBarcodes.toList()
+        for (barcode in list_barcodes)
+            Log.d("MainActivity", barcode.data)
     }
 }

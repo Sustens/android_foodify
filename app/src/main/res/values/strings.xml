@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Foodify</string>
-    <string name="scan_license">AUBviwuQFJIkKmSYZymIUNspayuxCCHcx1JqtTZRRSAEcFWB8FSqdJUMPXHpeLdaNzqLwVgze9bMTtzSUQHrodwd+ojUIPNhzAsz0RtfWDoqW0E0A2DcUpUZJQTJFlmAIwDzckAjM5s8PjQAB2UQZE2iThnvAEimpbl3lc3z9aqS5TrvvMQqXWh/6e5EoR2Fa6U2J/AK4vE4t1vHbgY3kcNXLUICvAhtXHigfdt740mjDhQOQImnch9muDd8FkZxChHDAFl4YGEJZqCNlqpf2/sec3hhB8QQW70sgN6Pt09hySX3TlcCm2LSFpH/ZFoOsbCPuw3LUr/od+D8RekerUJwfVQoniRN1+BxzJRidKP2BTUEJNj4DX+W0UX+0S1fM+mrszCJV4VGIDrChWR7WyN90WU7ASneZGTfzrjtJ62LqW/F6G1YTN9vf1QyB5rWe44YiccteJdAxvr0KPOZam8M04JkiR8oKOcIny8dTC4kf3zOsu8kMhICJ4PTTk5kK65k7PNuC/LtYu4uc9syVYU/ScdxjvUfnlpyzCto0/WmJf+Z7dQSnSWr1+KOnL3dSn1QHP9mt7aQsBYdBG4GXOBOklLOWhOH4+XaVFI3FwpeChytBzsIg02jNduO4Sn7kRmPiic70tT9bRngJWYiZ9u+G2XOcoa7q8hRvK54kikiP+pjU4dE5kCZpLcakWEqb8Mgh2S9D1ziQKNN+L3Zd7iWoLv6XqjaISItkvpdXESRQhIM2HDq5/Qw4wDfq7jWpvq1uAtm+sAH2NDwjIvXAOX99/JXKn69YVwPCd/zEKF4wHC8glc=</string>
+    <string name="scan_license">
+AUqPSwiQFwxTGIN5mgKlgV8h39u5OGnoEExC4OEPtlYJG7n0gGQ6mdxAZR0xBvk0y29m5thsonsJWQaqTmBgx15S1iMVTwJdniehjD95ieTuGHNQR0lc+Ih3R8DiJ0Je2jR6teMYAyzYMUnNWWSftM8k+ZZzLMiznKsrPh4DT3JOg2eqsCAI2c7d9xt2PpPHN9FIrD9dpE/olryvGfz1UlYM7D+a2Wi8WdRdPEGiXfDGpFFZQ5CuQTKn7bXO+fgl261MsK1I3JTIOjryVXci1kryU0mYTJj+1V8v7VUVVLBMZWNsrCM3YgIQgcVYEBOV4pjGVV4mhLJbfJlUrKDrhi5XkXEgdPCqzL0P5KOaNbavWKo7mpbvMu4x+IAAvDz9mcixY8e7rdfle1T7L1LQ/nFN/eOlAzxlvwmT7BfNzrphW94rJykOfPD7Sfv3yw5jWv3DP2tdQQVpTjOoQKC/b9ca2TI+Kci+TahoTQOAL7fS+9+f3bAczcOysvstyz9Up2wLW9U6rQsigOSan4C2SZ4z6OrgnbI0juvf7MjDBG9OyA7dMszKpqNbgySmBxfwz28zpb/IDUg9FvBF4PV8Z/22/8XGwfICEG7vH47dSasN0s2S805fMaAaU4S1vsmWWd9XUac6b/5MqB2L7YuxThz5QFzDKKlsd96OBaSdA2QeDMxPtXgLazTV0Ed2z+qArkaNoBVftPUJEXZkVfclTdC+VZ4b0APkSg6a5lGD7bNxzZXYcTZK1IoYfce5UH2IetvJh/vea0YAyrO238ZzkgbN7h5pD8cFgKjNkGBIHh03nY4nR4oVi4wS
+    </string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
