@@ -1,2 +1,5 @@
+include ':ScanditParser'
+include ':ScanditCaptureCore'
+include ':ScanditBarcodeCapture'
 include ':app'
 rootProject.name = "Foodify"
