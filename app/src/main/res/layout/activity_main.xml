@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="@color/wit"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -23,7 +23,8 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="ITEMS Details"
-        android:textColor="#fff"
+        android:textColor="@color/dark"
+        android:textStyle="bold"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

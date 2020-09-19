@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/wit">
 
     <TextView
         android:id="@+id/tv_id_title"
@@ -13,7 +13,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="Item ID:"
-        android:textColor="@color/wit"
+        android:textColor="@color/dark"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +23,10 @@
         android:id="@+id/tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/wit"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_id_title"
+         app:layout_constraintBottom_toBottomOf="@+id/tv_id_title"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_id_title" />
 
@@ -37,18 +37,19 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:text="FAT:"
-        android:textColor="@color/wit"
+        android:textColor="@color/dark"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_carbon_title" />
 
 
     <TextView
         android:id="@+id/tv_fat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/wit"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_fat_title"
@@ -58,26 +59,26 @@
 
     <TextView
         android:id="@+id/tv_co2_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="CO2 Rating:"
-        android:textColor="@color/wit"
+        android:text="sustainability scores:"
+        android:textColor="@color/dark"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/tv_fat_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fat_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <TextView
         android:id="@+id/tv_co2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fat_title" />
+         app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tv_co2_title" />
 
     <TextView
         android:id="@+id/tv_prot_title"
@@ -85,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="PROT:"
-        android:textColor="@color/wit"
+        android:textColor="@color/dark"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_co2_title"
@@ -95,106 +96,37 @@
         android:id="@+id/tv_prot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
+        android:textColor="@color/light"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tv_co2_title" />
 
-    <TextView
-        android:id="@+id/tv_water_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="WATER:"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_prot_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prot_title" />
-
-    <TextView
-        android:id="@+id/tv_water"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prot_title" />
 
     <TextView
         android:id="@+id/tv_carbon_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="carbon Footprint / 100g:"
-        android:textColor="@color/wit"
+        android:textColor="@color/dark"
+        android:layout_marginTop="15dp"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/tv_water_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_water_title" />
+        app:layout_constraintStart_toStartOf="@+id/tv_prot_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_prot_title" />
 
     <TextView
         android:id="@+id/tv_carbon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/wit"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_carbon_title"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_carbon_title" />
 
-
-    <TextView
-        android:id="@+id/tv_category_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="category:"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_carbon_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_carbon_title" />
-
-    <TextView
-        android:id="@+id/tv_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_carbon_title" />
-
-    <TextView
-        android:id="@+id/tv_energy_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Energy / 100g:"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_category_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_title" />
-
-    <TextView
-        android:id="@+id/tv_energy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_title" />
 
     <TextView
         android:id="@+id/tv_name_title"
@@ -202,56 +134,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Product Name:"
-        android:textColor="@color/wit"
+        android:textColor="@color/dark"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_energy_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_energy_title" />
+        app:layout_constraintStart_toStartOf="@+id/tv_id_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_id_title" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_name_title"
+         app:layout_constraintBottom_toBottomOf="@+id/tv_name_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_energy_title" />
+        app:layout_constraintTop_toTopOf="@+id/tv_name_title" />
 
-    <TextView
-        android:id="@+id/tv_price_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price / 100g:"
-        android:textColor="@color/wit"
-        android:layout_marginTop="15dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_name_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/wit"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="15dp"
-        android:background="@color/wit"
-        android:backgroundTint="@color/wit"
+        android:background="@color/dark"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_fat_title" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

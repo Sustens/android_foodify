@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sustens.foodify.databinding.DataItemBinding
 import com.sustens.foodify.model.ItemsResponseItem
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 private lateinit var context: Context
 
@@ -36,18 +38,20 @@ class ItemsAdapter(
             binding.apply {
                 item.apply {
                     tvId.text = ID
-                    tvFat.text = FAT.split('.')[0]
-                    tvCo2.text = CO2_rating.split('.')[0]
-                    tvProt.text = PROT.split('.')[0]
-                    tvWater.text = WATER.split('.')[0]
-                    tvCarbon.text = carbon_footprint_100g.split('.')[0]
-                    tvCategory.text = category.toString()
-                    tvEnergy.text = energy_100g.split('.')[0]
-                    tvName.text = product_name.toString()
-                    tvPrice.text = price_per_100g.toString()
+                    tvFat.text = roundOffDecimal(FAT).toString()
+                    tvCo2.text = roundOffDecimal(CO2_rating).toString()
+                    tvProt.text = roundOffDecimal(PROT).toString()
+                    tvCarbon.text = roundOffDecimal(carbon_footprint_100g).toString()
+                    tvName.text = product_name
 
                 }
             }
+        }
+
+        fun roundOffDecimal(number: Double): Double? {
+            val df = DecimalFormat("#.##")
+            df.roundingMode = RoundingMode.CEILING
+            return df.format(number).toDouble()
         }
 
     }

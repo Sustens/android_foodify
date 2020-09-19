@@ -1,5 +1,6 @@
 package com.sustens.foodify
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
@@ -34,8 +35,11 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
         setContentView(R.layout.activity_main)
 
         getItems()
-        initializeBarCode()
-        itemsAdapter =  ItemsAdapter(selectedItems)
+        if (!requestPermissions(arrayOf(CAMERA_PERMISSION))){
+            initializeBarCode()
+        }
+
+        itemsAdapter = ItemsAdapter(selectedItems)
         recycler_items.adapter = itemsAdapter
     }
 
@@ -80,7 +84,7 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
 
 
 // Depending on the use case further camera settings adjustments can be made here.
-       camera = Camera.getDefaultCamera()!!
+        camera = Camera.getDefaultCamera()!!
 
         if (camera != null) {
 
@@ -130,15 +134,17 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
             val recognizedBarcodes = session.newlyRecognizedBarcodes
             if (recognizedBarcodes.isNotEmpty()) {
                 itemID = recognizedBarcodes[0].data.toString()
-                val index = itemsData.indexOfFirst { it.ID.toString() == itemID }
-                Log.v("a7a", index.toString())
-                Log.v("a7a", itemID.toString())
-                if (index>0){
-                    selectedItems.add(itemsData[index])
-                    itemsAdapter.notifyDataSetChanged()
+                if (selectedItems.indexOfFirst { it.ID.toString() == itemID } == -1) {
+                    val index = itemsData.indexOfFirst { it.ID.toString() == itemID }
+
+                    if (index > 0) {
+                        selectedItems.add(itemsData[index])
+                        itemsAdapter.notifyDataSetChanged()
+                    }
                 }
 //                barcode_data.text = "${barcode_data.text} \n $lastBarcode \n"
-            }        }
+            }
+        }
         val list_barcodes = ArrayList<String>()
 
 //        for (barcode in recognizedBarcodes) {
@@ -152,4 +158,34 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
 //        startActivity(intent)
 
     }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+
+            PERMISSION_ALL -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    initializeBarCode()
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    showSnackBar("you should accept this permission to pick Barcode")
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return
+            }
+
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            else -> {
+                Log.v("a7a", "error")
+            }
+        }
+
+
+    }
+
 }

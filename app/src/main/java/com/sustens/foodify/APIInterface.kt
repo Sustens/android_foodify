@@ -12,6 +12,6 @@ import retrofit2.http.GET
  */
 interface APIInterface {
 
-    @GET("/dataSet.json")
+    @GET("/dataset.json")
     fun getItems(): Call<ItemsResponse>
 }

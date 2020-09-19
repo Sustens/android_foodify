@@ -4,13 +4,13 @@ class ItemsResponse : ArrayList<ItemsResponseItem>()
 
 
 data class ItemsResponseItem(
-    val CO2_rating: String,
-    val FAT: String,
+    val CO2_rating: Double,
+    val FAT: Double,
     val ID: String,
-    val PROT: String,
+    val PROT: Double,
     val WATER: String,
     val Weight: Weight,
-    val carbon_footprint_100g: String,
+    val carbon_footprint_100g: Double,
     val category: String,
     val energy_100g: String,
     val main_category: String,
