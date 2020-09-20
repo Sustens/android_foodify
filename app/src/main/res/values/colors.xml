@@ -10,4 +10,7 @@
     <color name="dark">#FF004E64</color>
     <color name="red">#FF0000</color>
 
+    <color name="lightgreen">#9CCC65</color>
+    <color name="lightred">#ef5350</color>
+    <color name="lightyellow">#FFEE58</color>
 </resources>

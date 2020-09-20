@@ -1,10 +1,12 @@
 package com.sustens.foodify
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.scandit.datacapture.barcode.capture.BarcodeCapture
 import com.scandit.datacapture.barcode.capture.BarcodeCaptureListener
 import com.scandit.datacapture.barcode.capture.BarcodeCaptureSession
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
     private var itemsData = ArrayList<ItemsResponseItem>()
     private var selectedItems = ArrayList<ItemsResponseItem>()
     private lateinit var itemsAdapter: ItemsAdapter
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,6 +46,8 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
 
         itemsAdapter = ItemsAdapter(selectedItems)
         recycler_items.adapter = itemsAdapter
+
+        DetailActivity.sel_objs = selectedItems
     }
 
     private fun getItems() {
@@ -61,6 +68,13 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
                 call.cancel()
             }
         })
+
+        findViewById<FloatingActionButton>(R.id.history).setOnClickListener { view ->
+           val intent = Intent(this, DetailActivity::class.java)
+
+            startActivity(intent)
+        }
+
     }
 
     private fun initializeBarCode() {
@@ -140,6 +154,8 @@ class MainActivity : AppCompatActivity(), BarcodeCaptureListener {
                     if (index > 0) {
                         selectedItems.add(itemsData[index])
                         itemsAdapter.notifyDataSetChanged()
+
+
                     }
                 }
 //                barcode_data.text = "${barcode_data.text} \n $lastBarcode \n"

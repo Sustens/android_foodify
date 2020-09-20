@@ -1,6 +1,7 @@
 package com.sustens.foodify
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -39,10 +40,28 @@ class ItemsAdapter(
                 item.apply {
                     tvId.text = ID
                     tvFat.text = roundOffDecimal(FAT).toString()
-                    tvCo2.text = roundOffDecimal(CO2_rating).toString()
+                    tvCo2.text = energy_100g
                     tvProt.text = roundOffDecimal(PROT).toString()
                     tvCarbon.text = roundOffDecimal(carbon_footprint_100g).toString()
                     tvName.text = product_name
+
+                    if(carbon_footprint_100g<=40){
+                        tvCarbon.setTextColor(Color.GREEN)
+                    } else if(carbon_footprint_100g<=80){
+                        tvCarbon.setTextColor(Color.YELLOW)
+                    } else {
+                        tvCarbon.setTextColor(Color.RED)
+                    }
+
+                    if(FAT<=3.5){
+                        tvFat.setTextColor(Color.GREEN)
+                    } else if(carbon_footprint_100g<=10){
+                        tvFat.setTextColor(Color.YELLOW)
+                    } else {
+                        tvFat.setTextColor(Color.RED)
+                    }
+
+
 
                 }
             }
